@@ -1,20 +1,33 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from "react";
+import { StatusBar } from "expo-status-bar";
+import AppLoading from "expo-app-loading";
 
-export default function App() {
+// root navigation stack
+import RootStack from "./src/navigation/RootStack";
+
+const App = () => {
+  const [isLoading, setIsLoading] = React.useState(true);
+
+  // // pre-loading assets/fonts?
+  if (isLoading) {
+    return (
+      <AppLoading
+        onError={() => {
+          // console.warn
+        }}
+        onFinish={() => setIsLoading(false)}
+        startAsync={() => Promise.resolve()}
+      />
+    );
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+    <React.Fragment>
+      <StatusBar />
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+      <RootStack />
+    </React.Fragment>
+  );
+};
+
+export default App;
