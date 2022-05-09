@@ -1,32 +1,28 @@
 import * as React from "react";
-import { StatusBar } from "expo-status-bar";
-import AppLoading from "expo-app-loading";
+import { NavigationContainer } from "@react-navigation/native";
+import { NativeBaseProvider } from "native-base";
+import { QueryClientProvider } from "react-query";
+import customTheme from "./src/constants/nativeBaseTheme";
+import client from "./src/api/client";
 
 // root navigation stack
 import RootStack from "./src/navigation/RootStack";
 
-const App = () => {
-  const [isLoading, setIsLoading] = React.useState(true);
-
-  // // pre-loading assets/fonts?
-  if (isLoading) {
-    return (
-      <AppLoading
-        onError={() => {
-          // console.warn
-        }}
-        onFinish={() => setIsLoading(false)}
-        startAsync={() => Promise.resolve()}
-      />
-    );
-  }
-
+export function AppProviders({ children }: React.PropsWithChildren<{}>) {
   return (
-    <React.Fragment>
-      <StatusBar />
+    <QueryClientProvider client={client}>
+      <NavigationContainer theme={customTheme}>
+        <NativeBaseProvider>{children}</NativeBaseProvider>
+      </NavigationContainer>
+    </QueryClientProvider>
+  );
+}
 
+const App = () => {
+  return (
+    <AppProviders>
       <RootStack />
-    </React.Fragment>
+    </AppProviders>
   );
 };
 
