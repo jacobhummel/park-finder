@@ -1,16 +1,7 @@
-import React from "react";
-import {
-  Center,
-  Spinner,
-  FlatList,
-  Box,
-  HStack,
-  Spacer,
-  VStack,
-  Text,
-} from "native-base";
-import { AppBar } from "../components/AppBar";
-import ParkList from "../components/ParkList";
+import { Center } from "native-base";
+
+import { AppBar } from "components/AppBar";
+import ParkList from "components/Park/ParkList";
 
 const HomeScreen = () => {
   return (

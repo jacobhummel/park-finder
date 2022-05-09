@@ -1,4 +1,3 @@
-import React from "react";
 import { StatusBar } from "expo-status-bar";
 import { Box, HStack, IconButton, Icon, Text } from "native-base";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
