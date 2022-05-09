@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 import React from "react";
-import useExchangeRates from "../hooks/useExchangeRates";
+import useParks from "../hooks/useParks";
 import {
   Box,
   HStack,
@@ -9,19 +9,29 @@ import {
   Text,
   FlatList,
   Spinner,
+  Heading,
 } from "native-base";
-import client from "../api/client";
 
-const ExchangeRateList = () => {
-  const { loading, error, data } = useExchangeRates();
+const ParkList = () => {
+  const { isFetching, isLoading, data, refetch } = useParks();
 
-  if (loading || !data?.rates) {
-    return <Spinner accessibilityLabel="Loading Exchange Rates" />;
+  if (isLoading || isFetching) {
+    return (
+      <HStack space={2} justifyContent="center">
+        <Spinner accessibilityLabel="Loading parks" />
+        <Heading color="primary.500" fontSize="md">
+          Loading
+        </Heading>
+      </HStack>
+    );
   }
 
   return (
     <FlatList
-      data={data.rates}
+      w="100%"
+      data={data?.results || []}
+      refreshing={isLoading}
+      onRefresh={refetch}
       renderItem={({ item }) => (
         <Box
           borderBottomWidth="1"
@@ -50,28 +60,18 @@ const ExchangeRateList = () => {
                   color: "warmGray.200",
                 }}
               >
-                {item.currency}
+                {item.location}
               </Text>
             </VStack>
             <Spacer />
-            <Text
-              fontSize="xs"
-              _dark={{
-                color: "warmGray.50",
-              }}
-              color="coolGray.800"
-              alignSelf="flex-start"
-            >
-              {item.rate}
-            </Text>
           </HStack>
         </Box>
       )}
-      keyExtractor={(item) => item.currency}
+      keyExtractor={(item) => item.name}
     />
   );
 };
 
-export default ExchangeRateList;
+export default ParkList;
 
 const styles = StyleSheet.create({});

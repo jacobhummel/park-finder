@@ -10,15 +10,14 @@ import {
   Text,
 } from "native-base";
 import { AppBar } from "../components/AppBar";
-import useExchangeRates from "../hooks/useExchangeRates";
-import ExchangeRateList from "../components/ExchangeRateList";
+import ParkList from "../components/ParkList";
 
 const HomeScreen = () => {
   return (
     <>
       <AppBar />
       <Center h="100%" w="100%">
-        <ExchangeRateList />
+        <ParkList />
       </Center>
     </>
   );

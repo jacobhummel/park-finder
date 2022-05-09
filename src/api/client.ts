@@ -1,8 +1,5 @@
-import { ApolloClient, InMemoryCache } from "@apollo/client";
+import { QueryClient } from "react-query";
 
-const client = new ApolloClient({
-  uri: "https://48p1r2roz4.sse.codesandbox.io", // Demo Coinbase API
-  cache: new InMemoryCache(),
-});
+const client = new QueryClient()
 
 export default client;
