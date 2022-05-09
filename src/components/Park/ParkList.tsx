@@ -2,6 +2,7 @@ import { HStack, FlatList, Spinner, Heading } from "native-base";
 
 import useParks from "hooks/useParks";
 import ParkRow from "./ParkRow";
+import { useCallback } from "react";
 
 const ParkList = () => {
   const { isFetching, isLoading, data, refetch } = useParks();
@@ -17,14 +18,19 @@ const ParkList = () => {
     );
   }
 
+  const handleRowPress = (id: string) => {
+    // TODO: navigate to map view for row
+    console.log(`Row ${id} pressed!`);
+  };
+
   return (
     <FlatList
       w="100%"
       data={data?.results || []}
       refreshing={isFetching}
       onRefresh={refetch}
-      renderItem={({ item }) => <ParkRow {...item} />}
-      keyExtractor={(item) => item.name}
+      renderItem={({ item }) => <ParkRow {...item} onPress={handleRowPress} />}
+      keyExtractor={(item) => item.id}
     />
   );
 };

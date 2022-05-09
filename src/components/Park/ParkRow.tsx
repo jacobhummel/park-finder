@@ -1,19 +1,24 @@
 import { Park } from "hooks/useParks";
-import { Box, HStack, VStack, Spacer, Text } from "native-base";
+import { Button, Box, HStack, VStack, Spacer, Text } from "native-base";
 
-interface Props extends Park {}
+interface Props extends Park {
+  onPress(id: string): void;
+}
 
-const ParkRow = ({ name, location }: Props) => {
+const ParkRow = ({ id, name, location, onPress }: Props) => {
   return (
-    <Box
+    <Button
       borderBottomWidth="1"
       _dark={{
+        backgroundColor: "dark.400",
         borderColor: "gray.600",
       }}
       borderColor="coolGray.200"
-      pl="4"
-      pr="5"
-      py="2"
+      backgroundColor="white"
+      justifyContent="flex-start"
+      onPress={() => onPress(id)}
+      py="3"
+      px="4"
     >
       <HStack space={3} justifyContent="space-between">
         <VStack>
@@ -37,7 +42,7 @@ const ParkRow = ({ name, location }: Props) => {
         </VStack>
         <Spacer />
       </HStack>
-    </Box>
+    </Button>
   );
 };
 
