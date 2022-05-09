@@ -15,7 +15,7 @@ import {
 const ParkList = () => {
   const { isFetching, isLoading, data, refetch } = useParks();
 
-  if (isLoading || isFetching) {
+  if (isLoading) {
     return (
       <HStack space={2} justifyContent="center">
         <Spinner accessibilityLabel="Loading parks" />
@@ -30,7 +30,7 @@ const ParkList = () => {
     <FlatList
       w="100%"
       data={data?.results || []}
-      refreshing={isLoading}
+      refreshing={isFetching}
       onRefresh={refetch}
       renderItem={({ item }) => (
         <Box
