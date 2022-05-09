@@ -1,5 +1,5 @@
-import { Park } from "hooks/useParks";
-import { Button, Box, HStack, VStack, Spacer, Text } from "native-base";
+import { Park } from "api/parks";
+import { Button, HStack, VStack, Spacer, Text } from "native-base";
 
 interface Props extends Park {
   onPress(id: string): void;

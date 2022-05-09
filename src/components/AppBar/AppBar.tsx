@@ -4,16 +4,29 @@ import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { useCallback } from "react";
 import { useState } from "react";
 
-export function AppBar() {
+interface Props {
+  onSearchTextChanged?(searchText: string): void;
+}
+
+export function AppBar({ onSearchTextChanged }: Props) {
   const [showSearch, setShowSearch] = useState(false);
   const [searchText, setSearchText] = useState("");
+
+  const handleSearchTextChange = useCallback(
+    (text: string) => {
+      setSearchText(text);
+      onSearchTextChanged && onSearchTextChanged(text);
+    },
+    [setSearchText, onSearchTextChanged]
+  );
+
   const handleSearchPress = useCallback(() => {
     setShowSearch(true);
   }, [setShowSearch]);
 
   const handleSearchClosePress = useCallback(() => {
     setShowSearch(false);
-    setSearchText("");
+    handleSearchTextChange("");
   }, [setShowSearch, setSearchText]);
 
   return (
@@ -45,7 +58,7 @@ export function AppBar() {
             <Input
               autoFocus
               value={searchText}
-              onChangeText={(text) => setSearchText(text)}
+              onChangeText={handleSearchTextChange}
               InputLeftElement={
                 <Icon
                   as={MaterialIcons}

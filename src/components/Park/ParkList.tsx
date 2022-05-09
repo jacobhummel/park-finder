@@ -2,10 +2,9 @@ import { HStack, FlatList, Spinner, Heading } from "native-base";
 
 import useParks from "hooks/useParks";
 import ParkRow from "./ParkRow";
-import { useCallback } from "react";
 
-const ParkList = () => {
-  const { isFetching, isLoading, data, refetch } = useParks();
+const ParkList = ({ searchText }: { searchText: string }) => {
+  const { isFetching, isLoading, data, refetch } = useParks(searchText);
 
   if (isLoading) {
     return (
