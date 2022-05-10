@@ -1,10 +1,13 @@
 import { HStack, FlatList, Spinner, Heading } from "native-base";
+import { useNavigation } from "@react-navigation/native";
 
 import useParks from "hooks/useParks";
 import ParkRow from "./ParkRow";
+import { StackList } from "navigation/RootStack";
 
 const ParkList = ({ searchText }: { searchText: string }) => {
   const { isFetching, isLoading, data, refetch } = useParks(searchText);
+  const { navigate } = useNavigation<StackList>();
 
   if (isLoading) {
     return (
@@ -18,8 +21,7 @@ const ParkList = ({ searchText }: { searchText: string }) => {
   }
 
   const handleRowPress = (id: string) => {
-    // TODO: navigate to map view for row
-    console.log(`Row ${id} pressed!`);
+    navigate("MapScreen", { id });
   };
 
   return (
