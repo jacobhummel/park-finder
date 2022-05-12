@@ -1,8 +1,7 @@
-import { Center } from "native-base";
 import { AppBar } from "components/AppBar";
 import ParkList from "components/Park/ParkList";
 import { useCallback, useState } from "react";
-import { HStack, IconButton, Icon, Text, Input } from "native-base";
+import { HStack, IconButton, Icon, Text, Input, Center } from "native-base";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 
 const HomeScreen = () => {

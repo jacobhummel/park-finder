@@ -5,7 +5,7 @@ interface Props extends Park {
   onPress(id: string): void;
 }
 
-const ParkRow = ({ id, name, location, onPress }: Props) => {
+const ParkRow = ({ id, name, address, onPress }: Props) => {
   return (
     <Button
       borderBottomWidth="1"
@@ -37,7 +37,7 @@ const ParkRow = ({ id, name, location, onPress }: Props) => {
               color: "warmGray.200",
             }}
           >
-            {location}
+            {address}
           </Text>
         </VStack>
         <Spacer />
