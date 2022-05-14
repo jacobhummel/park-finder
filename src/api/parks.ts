@@ -29,8 +29,8 @@ const DEMO_RESULTS: Park[] = [
     id: "3",
     name: "Meadow Neighborhood Park",
     address: "2725 Oakland Rd, Minnetonka, MN 55305",
-    lat: 47.6962,
-    lng: -122.1257,
+    lat: 44.952,
+    lng: -93.4507,
   },
   {
     id: "4",

@@ -20,8 +20,7 @@ export function createCtx<A>(defaultValue: A) {
 }
 
 interface AppContextInterface {
-  sourceLocation?: object;
-  destinationLocation?: object;
+  // non-network global state goes here
 }
 
 const [ctx, AppCtxProvider] = createCtx<AppContextInterface>({});
