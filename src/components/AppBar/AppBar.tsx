@@ -1,34 +1,8 @@
 import { StatusBar } from "expo-status-bar";
-import { Box, HStack, IconButton, Icon, Text, Input } from "native-base";
-import MaterialIcons from "@expo/vector-icons/MaterialIcons";
-import { useCallback } from "react";
-import { useState } from "react";
+import { Box, HStack } from "native-base";
+import React from "react";
 
-interface Props {
-  onSearchTextChanged?(searchText: string): void;
-}
-
-export function AppBar({ onSearchTextChanged }: Props) {
-  const [showSearch, setShowSearch] = useState(false);
-  const [searchText, setSearchText] = useState("");
-
-  const handleSearchTextChange = useCallback(
-    (text: string) => {
-      setSearchText(text);
-      onSearchTextChanged && onSearchTextChanged(text);
-    },
-    [setSearchText, onSearchTextChanged]
-  );
-
-  const handleSearchPress = useCallback(() => {
-    setShowSearch(true);
-  }, [setShowSearch]);
-
-  const handleSearchClosePress = useCallback(() => {
-    setShowSearch(false);
-    handleSearchTextChange("");
-  }, [setShowSearch, setSearchText]);
-
+export function AppBar({ children }: React.PropsWithChildren<{}>) {
   return (
     <>
       <StatusBar />
@@ -41,61 +15,7 @@ export function AppBar({ onSearchTextChanged }: Props) {
         alignItems="center"
         w="100%"
       >
-        {!showSearch && (
-          <HStack alignItems="center">
-            <IconButton
-              icon={
-                <Icon size="md" as={MaterialIcons} name="menu" color="white" />
-              }
-            />
-            <Text color="white" fontSize="23" fontWeight="bold">
-              Park Finder
-            </Text>
-          </HStack>
-        )}
-        <HStack>
-          {showSearch ? (
-            <Input
-              autoFocus
-              value={searchText}
-              onChangeText={handleSearchTextChange}
-              InputLeftElement={
-                <Icon
-                  as={MaterialIcons}
-                  name="search"
-                  size="md"
-                  ml="2"
-                  color="white"
-                />
-              }
-              InputRightElement={
-                <Icon
-                  as={MaterialIcons}
-                  name="close"
-                  size="md"
-                  mr="2"
-                  color="white"
-                  onPress={handleSearchClosePress}
-                />
-              }
-              fontSize="20"
-              color="white"
-              placeholder="Enter Park"
-            />
-          ) : (
-            <IconButton
-              icon={
-                <Icon
-                  as={MaterialIcons}
-                  name="search"
-                  size="md"
-                  color="white"
-                />
-              }
-              onPress={handleSearchPress}
-            />
-          )}
-        </HStack>
+        {children}
       </HStack>
     </>
   );
