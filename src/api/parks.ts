@@ -41,12 +41,7 @@ const DEMO_RESULTS: Park[] = [
   },
 ];
 
-const waitFor = (delay: number) =>
-  new Promise((resolve) => setTimeout(resolve, delay));
-
 export async function searchParks(searchText: string): Promise<ParksResponse> {
-  await waitFor(500); // fake network timing
-
   return Promise.resolve({
     results: searchText
       ? DEMO_RESULTS.filter((result) => result.name.includes(searchText))
@@ -55,7 +50,5 @@ export async function searchParks(searchText: string): Promise<ParksResponse> {
 }
 
 export async function searchParksById(id: string): Promise<Park | undefined> {
-  await waitFor(500); // fake network timing
-
   return Promise.resolve(DEMO_RESULTS.find((result) => result.id === id));
 }
