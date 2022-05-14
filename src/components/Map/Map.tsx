@@ -1,9 +1,15 @@
 import { Dimensions, StyleSheet } from "react-native";
-import React, { useRef } from "react";
+import React from "react";
 import MapView, { Marker } from "react-native-maps";
 import { Box } from "native-base";
 
-const Map = ({ latitude, longitude }) => {
+const Map = ({
+  latitude,
+  longitude,
+}: {
+  latitude: number;
+  longitude: number;
+}) => {
   return (
     <Box flex="1">
       <MapView

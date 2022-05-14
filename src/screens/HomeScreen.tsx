@@ -3,8 +3,12 @@ import ParkList from "components/Park/ParkList";
 import { useCallback, useState } from "react";
 import { HStack, IconButton, Icon, Text, Input, Center } from "native-base";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { RootStackParamList } from "navigation/RootStack";
 
-const HomeScreen = () => {
+type Props = NativeStackScreenProps<RootStackParamList, "HomeScreen">;
+
+const HomeScreen = ({ navigation }: Props) => {
   const [showSearch, setShowSearch] = useState(false);
   const [searchText, setSearchText] = useState("");
 

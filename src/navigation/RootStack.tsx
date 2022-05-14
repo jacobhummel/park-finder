@@ -6,6 +6,7 @@ import HomeScreen from "../screens/HomeScreen";
 import MapScreen from "../screens/MapScreen";
 
 export type RootStackParamList = {
+  navigate: any; // react navigation type issue
   HomeScreen: undefined;
   MapScreen: { id: string };
 };

@@ -3,12 +3,12 @@ import { useNavigation } from "@react-navigation/native";
 
 import useParks from "hooks/useParks";
 import ParkRow from "./ParkRow";
-import { StackList } from "navigation/RootStack";
+import { RootStackParamList } from "navigation/RootStack";
 import { useCallback } from "react";
 
 const ParkList = ({ searchText }: { searchText: string }) => {
   const { isFetching, isLoading, data, refetch } = useParks(searchText);
-  const { navigate } = useNavigation<StackList>();
+  const { navigate } = useNavigation<RootStackParamList>();
   const handleRowPress = useCallback(
     (id: string) => {
       navigate("MapScreen", { id });
