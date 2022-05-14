@@ -1,14 +1,20 @@
 import { Dimensions, StyleSheet } from "react-native";
-import React from "react";
+import React, { useRef } from "react";
 import MapView, { Marker } from "react-native-maps";
 import { Box } from "native-base";
 
-type Props = { latitude: number; longitude: number };
-
-const Map = ({ latitude, longitude }: Props) => {
+const Map = ({ latitude, longitude }) => {
   return (
     <Box flex="1">
-      <MapView style={styles.map} showsUserLocation>
+      <MapView
+        initialRegion={{
+          latitude,
+          longitude,
+          latitudeDelta: 0.05,
+          longitudeDelta: 0.05,
+        }}
+        style={styles.map}
+      >
         <Marker coordinate={{ latitude, longitude }} />
       </MapView>
     </Box>

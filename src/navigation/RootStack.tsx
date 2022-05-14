@@ -5,11 +5,11 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "../screens/HomeScreen";
 import MapScreen from "../screens/MapScreen";
 
-export type StackList = {
+export type RootStackParamList = {
   HomeScreen: undefined;
-  MapScreen: undefined;
+  MapScreen: { id: string };
 };
-const Stack = createNativeStackNavigator<StackList>();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const RootStack = () => (
   <>
@@ -27,6 +27,7 @@ const RootStack = () => (
         options={{
           headerShown: false,
         }}
+        initialParams={{ id: undefined }}
       />
     </Stack.Navigator>
   </>

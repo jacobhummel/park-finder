@@ -4,10 +4,17 @@ import { useNavigation } from "@react-navigation/native";
 import useParks from "hooks/useParks";
 import ParkRow from "./ParkRow";
 import { StackList } from "navigation/RootStack";
+import { useCallback } from "react";
 
 const ParkList = ({ searchText }: { searchText: string }) => {
   const { isFetching, isLoading, data, refetch } = useParks(searchText);
   const { navigate } = useNavigation<StackList>();
+  const handleRowPress = useCallback(
+    (id: string) => {
+      navigate("MapScreen", { id });
+    },
+    [navigate]
+  );
 
   if (isLoading) {
     return (
@@ -19,10 +26,6 @@ const ParkList = ({ searchText }: { searchText: string }) => {
       </HStack>
     );
   }
-
-  const handleRowPress = (id: string) => {
-    navigate("MapScreen", { id });
-  };
 
   return (
     <FlatList
