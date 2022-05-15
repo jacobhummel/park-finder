@@ -1,11 +1,11 @@
 import { Park } from "api/parks";
 import { Button, HStack, VStack, Spacer, Text } from "native-base";
 
-interface Props extends Park {
+export interface ParkRowProps extends Park {
   onPress(id: string): void;
 }
 
-const ParkRow = ({ id, name, address, onPress }: Props) => {
+const ParkRow = ({ id, name, address, onPress }: ParkRowProps) => {
   return (
     <Button
       borderBottomWidth="1"
