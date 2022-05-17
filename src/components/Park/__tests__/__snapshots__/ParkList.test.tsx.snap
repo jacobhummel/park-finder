@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ParkList should render 1`] = `
+<RNCSafeAreaProvider
+  onInsetsChange={[Function]}
+  style={
+    Array [
+      Object {
+        "flex": 1,
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    dataSet={Object {}}
+    style={
+      Object {
+        "flexDirection": "row",
+        "justifyContent": "center",
+      }
+    }
+  >
+    <ActivityIndicator
+      accessibilityLabel="loading"
+      accessible={true}
+      animating={true}
+      color="#0891b2"
+      hidesWhenStopped={true}
+      size="small"
+      style={
+        Array [
+          Array [
+            Object {},
+            Object {
+              "accessibilityLabel": "Loading parks",
+              "dataSet": Object {},
+            },
+          ],
+          undefined,
+        ]
+      }
+    />
+    <View
+      dataSet={Object {}}
+      style={
+        Object {
+          "width": 8,
+        }
+      }
+    />
+    <Text
+      dataSet={Object {}}
+      style={
+        Object {
+          "backgroundColor": undefined,
+          "color": "#06b6d4",
+          "fontFamily": undefined,
+          "fontSize": 16,
+          "fontStyle": "normal",
+          "fontWeight": "700",
+          "letterSpacing": 0,
+          "lineHeight": 20,
+          "textDecorationLine": undefined,
+        }
+      }
+    >
+      Loading
+    </Text>
+  </View>
+</RNCSafeAreaProvider>
+`;
