@@ -6,7 +6,11 @@ import ParkRow from "./ParkRow";
 import { RootStackParamList } from "navigation/RootStack";
 import { useCallback } from "react";
 
-const ParkList = ({ searchText }: { searchText: string }) => {
+export interface ParkListProps {
+  searchText: string;
+}
+
+const ParkList = ({ searchText }: ParkListProps) => {
   const { isFetching, isLoading, data, refetch } = useParks(searchText);
   const { navigate } = useNavigation<RootStackParamList>();
   const handleRowPress = useCallback(
